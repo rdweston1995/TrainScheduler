@@ -1,3 +1,4 @@
+//TESTING COMMIT
 $(document).ready(function(){
   // Your web app's Firebase configuration
   var firebaseConfig = {
