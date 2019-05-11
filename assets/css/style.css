@@ -1,10 +1,13 @@
 /* HEADING */
 header{
     text-align: center;
-
-    font: #cccccc;
-
     background-color: burlywood;
+    color: white;
+}
+
+/* BODY */
+body{
+    font-family: 'Raleway', sans-serif;
 }
 
 /* TABLE */
@@ -14,6 +17,7 @@ header{
 
 .card-header{
     background-color: lightblue;
+    
 }
 /* ADD TRAIN */
 

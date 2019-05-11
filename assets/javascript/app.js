@@ -16,13 +16,15 @@ $(document).ready(function(){
 
   var trainCount = 0;
   
+  //When the submit button is clicked
   $("#submit").on("click", function(){
-    
+    //Grabing the values of the input from the user
     var trainName = $("#addTrain").val().trim();
     var destination = $("#addDestination").val().trim();
     var trainTime = $("#firstTrainTime").val().trim();
     var frequency = $("#frequency").val().trim();
 
+    //Creating the newTrain object to be pushed to the database
     var newTrain = {
       "trainName": trainName,
       "destination": destination,
@@ -32,15 +34,16 @@ $(document).ready(function(){
 
     database.ref().push(newTrain);
 
+    //Clearing the values of the input
     $("#addTrain").val("");
     $("#addDestination").val("");
     $("#firstTrainTime").val("");
     $("#frequency").val("");
   });
 
-  
+  //When a child is added to the database or on a new page load to display the information in the table of the trains
   database.ref().on("child_added", function(childSnapshot){
-    //console.log(childSnapshot);
+    //All this to get the time to the next train and what time it will arrive at
     var hourStart = childSnapshot.val().trainTime;
     hourStart = parseInt(hourStart.substr(0,2));
     var minStart = childSnapshot.val().trainTime;
@@ -52,7 +55,6 @@ $(document).ready(function(){
     var minTimeCurrent = (hourCurrent * 60) + minCurrent;
 
     var timePastStart = minTimeCurrent - minTimeStart;
-    var totalRuns = Math.floor(timePastStart / parseInt(childSnapshot.val().frequency));
     var timeTillNext = parseInt(childSnapshot.val().frequency) - (timePastStart % parseInt(childSnapshot.val().frequency));
 
     var nextHour = hourCurrent;
@@ -75,16 +77,11 @@ $(document).ready(function(){
     if(nextHour >= 12){
       amPM = "PM";
     }
-    
-    //console.log("---------------");
 
     nextHour = nextHour % 12;
     if(nextHour === 0){
       nextHour = 12;
     }
-
-    
-    
 
     //Adding each child in the database to the table
     $(".trainsTable").append("<tr class='train" + trainCount + "'><td scope='col'>" + childSnapshot.val().trainName + 
@@ -92,10 +89,8 @@ $(document).ready(function(){
         "</td><td scope='col'>" + childSnapshot.val().frequency + 
         "</td><td scope='col'>" + nextHour + ":" + nextMin + " " + amPM +
         "</td><td scope='col'>" + timeTillNext + "</td></tr>");
-    
+
     //Adding one to the trainCount variable    
     trainCount++;
   });
-
-
 });
