@@ -14,47 +14,83 @@
 
     <!-- Javascript -->
     <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script src="assets/javascript/app.js"></script>
 
 
     <title>Train Scheduler</title>
 </head>
 <body>
-    <div class="jumbotron">
-        <h1>Anytime is train time</h1>
-        <h2>Choo choo. Chee chee</h2>
-    </div>
-    <div class="row">
-        <table class="trainsTable">
-            <thead>
-                Current Train Schedule                
-                <tr class="headings">
-                    <th scope="col">Train Name</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Frequency (min)</th>
-                    <th scope="col">Next Arrival</th>
-                    <th scope="col">Minutes Away</th>
-                </tr>
-            </thead>
-        </table>
+    <header>
+        <div class="jumbotron jumbotron-fluid bg-primary heading">
+            <div class="container">
+                <h1>Anytime is Train Time</h1>
+                <h2>Choo choo. Chee chee</h2>
+            </div>
+        </div>
+    </header>
 
-        <table class="newTrains">
-        </table>
-    </div>
+    <div class="container">
+        <div class="card tableCard">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Current Train Schedule</h5>
+                </div>
+                        <table class="table trainsTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                        </table>
+                
+            </div>
+        </div>
 
-    <div class="row">
-        <form>Add Train
-            <p>Train Name</p>
-            <input id="addTrain">
-            <p>Destination</p>
-            <input id="addDestination">
-            <p>First Train Time (HH:mm - military time)</p>
-            <input id="firstTrainTime">
-            <p>Frequency (min)</p>
-            <input id="frequency">
-            <button id="submit">Submit</button>
-        </form>
+        <div class="card addCard">
+            <civ class="card">
+                <div class="card-header">
+                    <h5 class="card-Title">Add Train</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle">Train Name</h6>
+                    <div cass="input-group input-group-sm mb-3">
+                        <input type="text" id="addTrain" class="form-control">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle">Destination</h6>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" id="addDestination" class="form-control">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle">First Train (HH:mm - military time)</h6>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" id="firstTrainTime" class="form-control">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle">Frequency (min)</h6>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" id="frequency" class="form-control">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-1">
+                            <button type="button" id="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </civ>
+        </div>
     </div>
 </body>
 </html>

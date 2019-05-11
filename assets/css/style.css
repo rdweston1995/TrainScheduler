@@ -1,0 +1,20 @@
+/* HEADING */
+header{
+    text-align: center;
+
+    font: #cccccc;
+
+    background-color: burlywood;
+}
+
+/* TABLE */
+.tableCard{
+    margin-bottom: 15px;
+}
+
+.card-header{
+    background-color: lightblue;
+}
+/* ADD TRAIN */
+
+
